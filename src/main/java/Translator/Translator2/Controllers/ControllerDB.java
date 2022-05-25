@@ -1,6 +1,6 @@
 package Translator.Translator2.Controllers;
 
-import Translator.Translator2.db_reader.DAO;
+
 import com.MMTR.readers.db_reader.ConnectDB;
 import com.MMTR.readers.db_reader.DbReader;
 import com.MMTR.readers.db_reader.SettingDb;
