@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <form th:action="@{/backToStart}" method="post">
+                        <button type="submit">back</button>
+                    </form>
+                </td>
+                <td/>
+                <td>
+                    <form th:action="@{/findWord}" method="post">
+                        <button type="submit">find</button>
+                    </form>
+                </td>
+                <td/>
+                <td>
+                    <form th:action="@{/selectAll}" method="post">
+                        <button type="submit">selectAll</button>
+                    </form>
+                </td>
+                <td/>
+                <td>
+                    <form th:action="@{/addWord}" method="post">
+                        <button type="submit">addWord</button>
+                    </form>
+                </td>
+                <td/>
+                <td>
+                    <form th:action="@{/deleteWord}" method="post">
+                        <button type="submit">delete</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
