@@ -1,4 +1,4 @@
-package Translator.Translator2.Controllers;
+package translator.controllers;
 
 
 import com.MMTR.readers.db_reader.ConnectDB;
@@ -6,6 +6,10 @@ import com.MMTR.readers.db_reader.DbReader;
 import com.MMTR.readers.db_reader.SettingDb;
 import com.MMTR.servis.TypeLanguage;
 import com.MMTR.servis.UserDAO;
+import translator.entities.Another_words;
+import translator.entities.Translater;
+import translator.entities.WordRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +17,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class ControllerDB {
 
-   UserDAO userDAO;
+    private WordRepository wordRepository;
+
+    @Autowired
+    public void setWordRepository(WordRepository wordRepository) {
+        this.wordRepository = wordRepository;
+    }
+
+    UserDAO userDAO;
 
     @GetMapping("/start")
     public String showTest() {
@@ -91,6 +103,27 @@ public class ControllerDB {
         model.addAttribute("words", userDAO.selectAll());
         return "select";
     }
+
+
+
+    @GetMapping("/test")
+    public String wordTest(Model model) {
+        List<Translater> list = wordRepository.findAll();
+        List<String> words = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        for (Translater word: list) {
+            sb.append(word.getAnother_word_id().getAnother_word());
+            sb.append(" - ");
+            sb.append(word.getTranslater_word_id().getTranslater_word());
+            words.add(sb.toString());
+            sb.delete(0, sb.length());
+        }
+        model.addAttribute("words", words);
+        return "wordAllTest";
+    }
+
+
+
 
     @PostMapping("/addWord")
     public String addWord() {

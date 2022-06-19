@@ -1,33 +1,38 @@
-INSERT INTO english_words (english_word)
+
+INSERT INTO users
+VALUES
+('admin', '{noop}admin', true),
+('user', '{noop}123', true);
+
+
+INSERT INTO authorities
+VALUES
+    ('admin', 'ROLE_ADMIN'),
+    ('admin', 'ROLE_USER'),
+    ('user', 'ROLE_USER');
+
+
+INSERT INTO another_words (another_word)
 VALUES  ('tree'),
-        ('true');
+        ('true'),
+        ('11083'),
+        ('12457');
 
-
-INSERT INTO russian_words (russian_word)
+INSERT INTO translater_words (translater_word)
 VALUES  ('дерево'),
         ('правда'),
         ('истина');
 
-
-INSERT INTO numeric_words (numeric_word)
-VALUES  ('11083'),
-        ('12457');
-
-
-INSERT INTO english_transtator (english_id, russian_id)
-VALUES  (1,1),
-        (2, 2),
-        (2,3);
+INSERT INTO translater_rules (users, translater_title, translater_rule)
+VALUES  ('user','numerical transleter','\d{5}'),
+        ('admin','numerical transleter','\d{5}'),
+        ('admin','english transleter','\D{4}'),
+        ('admin','russian transleter',NULL);
 
 
-INSERT INTO numeric_transtator (english_id, numeric_id)
-VALUES  (1, 1),
-        (2, 2);
+INSERT INTO translater (rule,another_word_id, translater_word_id)
+VALUES  (1,1,1),
+        (1,2,2),
+        (1,2,3),
+        (2,2,3);
 
-
-INSERT INTO flywaydb.english_transtator(english_id, russian_id)
-VALUES  (
-	(SELECT english_id FROM flywaydb.english_words
-		WHERE english_word = 'bush'),
-	(SELECT russian_id FROM flywaydb.russian_words
-	WHERE russian_word = 'куст'));
