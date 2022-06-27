@@ -1,7 +1,6 @@
 package translator.services;
 
-import translator.entities.Another_words;
-import translator.entities.Translater;
+import translator.entities.tables.Translater;
 import translator.entities.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

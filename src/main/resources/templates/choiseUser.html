@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <form th:action="@{/user/singIn}" method="post" th:object="${users}" class="form-horizontal">
+            <p>
+                <select size="3"   User name="user">
+                    <option disabled>Выберете пользователя</option>
+                    <tr th:each="user : ${users}">
+                        <option value="user" th:text="${user.username}"/>
+                    </tr>
+                </select>
+            </p>
+            <button type="submit">sing in</button>
+            <table>
+                <tr>
+                    <td>
+                        <form th:action="@{/createNewUser}" method="post">
+                            <button type="submit">create new user</button>
+                        </form>
+                    </td>
+                    <td/>
+                    <td>
+                        <form th:action="@{/user/singIn}" th:object="${users}" method="post">
+                            <button type="submit">sing in</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

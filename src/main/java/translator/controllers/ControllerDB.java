@@ -6,9 +6,7 @@ import com.MMTR.readers.db_reader.DbReader;
 import com.MMTR.readers.db_reader.SettingDb;
 import com.MMTR.servis.TypeLanguage;
 import com.MMTR.servis.UserDAO;
-import translator.entities.Another_words;
-import translator.entities.Translater;
-import translator.entities.WordRepository;
+import translator.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import translator.entities.tables.Translater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +23,14 @@ import java.util.List;
 public class ControllerDB {
 
     private WordRepository wordRepository;
+
+    private UsersRepository usersRepository;
+
+
+    @Autowired
+    public void setUsersRepository(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
+    }
 
     @Autowired
     public void setWordRepository(WordRepository wordRepository) {
@@ -36,6 +43,12 @@ public class ControllerDB {
     public String showTest() {
         return "choiseLanguageType";
     }
+
+
+
+
+
+
 
     @PostMapping("/backToStart")
     public String backToStart() {
@@ -63,6 +76,12 @@ public class ControllerDB {
             userDAO = new UserDAO(dbReader,connectDB);
         return "redirect:/translator";
     }
+
+
+
+
+
+
 
     @GetMapping("/translator")
     public String getAormTranslator() {
@@ -100,14 +119,6 @@ public class ControllerDB {
 
     @PostMapping("/selectAll")
     public String selectAll(Model model) {
-        model.addAttribute("words", userDAO.selectAll());
-        return "select";
-    }
-
-
-
-    @GetMapping("/test")
-    public String wordTest(Model model) {
         List<Translater> list = wordRepository.findAll();
         List<String> words = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
@@ -119,11 +130,10 @@ public class ControllerDB {
             sb.delete(0, sb.length());
         }
         model.addAttribute("words", words);
-        return "wordAllTest";
+
+       // model.addAttribute("words", userDAO.selectAll());
+        return "select";
     }
-
-
-
 
     @PostMapping("/addWord")
     public String addWord() {

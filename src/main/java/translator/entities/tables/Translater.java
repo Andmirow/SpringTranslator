@@ -1,4 +1,4 @@
-package translator.entities;
+package translator.entities.tables;
 
 import jakarta.persistence.*;
 
