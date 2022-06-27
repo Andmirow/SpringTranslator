@@ -9,31 +9,19 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form th:action="@{/user/singIn}" method="post" th:object="${translater_rules}" class="form-horizontal">
+        <form th:action="@{/user/next}" method="post">
             <p>
-                <select size="3" Translater_rules name="translater_rule">
+                <select size="3" Long name="rule_id">
                     <option disabled>Выберете словарь</option>
                     <tr th:each="translater_rule : ${translater_rules}">
-                        <option th:text="${translater_rule.translater_title}"/>
+                        <option th:value="${translater_rule.rules_id}" th:text="${translater_rule.translater_title}"/>
                     </tr>
                 </select>
             </p>
-            <table>
-                <tr>
-                    <td>
-                        <form th:action="@{/user/back}" method="post">
-                            <button type="submit">back</button>
-                        </form>
-                    </td>
-                    <td/>
-                    <td>
-                        <form th:action="@{/user/next}" th:object="${translater_rules}" method="post">
-                            <button type="submit">next</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
+            <button type="submit">next</button>
         </form>
-
+        <form th:action="@{/user/back}" method="post">
+            <button type="submit">back</button>
+        </form>
     </body>
 </html>

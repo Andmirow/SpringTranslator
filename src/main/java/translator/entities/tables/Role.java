@@ -2,6 +2,7 @@ package translator.entities.tables;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "roles")
 public class Role {

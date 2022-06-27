@@ -17,6 +17,11 @@ public class UserService {
         this.usersRepository = usersRepository;
     }
 
+    public Users getUserByName(String  username){
+        return usersRepository.findByUsername(username);
+    }
+
+
     public List<Users> getAllUsers(){
         return usersRepository.findAll();
     }

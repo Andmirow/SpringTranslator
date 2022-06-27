@@ -7,6 +7,7 @@ import translator.entities.tables.Translater_rules;
 import translator.entities.tables.Users;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RulesService {
@@ -20,7 +21,7 @@ public class RulesService {
 
 
     public List<Translater_rules> getUsersRule(Users users){
-        return rulesRepository.findByUsers(users.getUsername());
+        return rulesRepository.findByUsers(users);
     }
 
     public List<Translater_rules> getAllRules(){
@@ -35,6 +36,9 @@ public class RulesService {
         rulesRepository.save(translater_rules);
     }
 
-
+    public Translater_rules getRulesById(Long id){
+        Optional<Translater_rules> otr = rulesRepository.findById(id);
+        return otr.get();
+    }
 
 }

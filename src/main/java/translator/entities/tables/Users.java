@@ -2,6 +2,7 @@ package translator.entities.tables;
 
 import jakarta.persistence.*;
 
+
 import java.util.Collection;
 
 
@@ -43,9 +44,9 @@ public class Users {
         this.enabled = enabled;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_roles",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns =  @JoinColumn(name = "rule_id"))
-    private Collection<Role> roles;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "users_roles",
+//    joinColumns = @JoinColumn(name = "user_id"),
+//    inverseJoinColumns =  @JoinColumn(name = "rule_id"))
+//    private Collection<Role> roles;
 }

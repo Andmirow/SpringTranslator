@@ -8,6 +8,9 @@ public class SettingTranslate {
 
     private static Users users;
 
+    private static Translater_rules translater_rules;
+
+
     public static Users getUsers() {
         return users;
     }
@@ -23,6 +26,4 @@ public class SettingTranslate {
     public static void setTranslater_rules(Translater_rules translater_rules) {
         translater_rules = translater_rules;
     }
-
-    private static Translater_rules translater_rules;
 }

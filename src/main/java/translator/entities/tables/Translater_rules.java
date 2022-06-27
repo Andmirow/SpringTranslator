@@ -31,9 +31,18 @@ public class Translater_rules {
         this.translater_title = translater_title;
     }
 
+
+
     @Column(name = "translater_rule")
     private String translater_rule;
 
+    public String getTranslater_rule() {
+        return translater_rule;
+    }
+
+    public void setTranslater_rule(String translater_rule) {
+        this.translater_rule = translater_rule;
+    }
 
 
     @ManyToOne
