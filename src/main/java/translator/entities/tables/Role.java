@@ -36,6 +36,12 @@ public class Role {
 
     public Role() {}
 
+    @Override
+    public String toString(){
+        return "Role{ id="+ getId() + ", name =" + getName() + "}" ;
+    }
+
+
 }
 
 
