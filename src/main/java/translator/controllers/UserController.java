@@ -19,6 +19,7 @@ public class UserController {
     private UserService userService;
     private RulesService rulesService;
 
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -39,7 +40,7 @@ public class UserController {
     @PostMapping("/singIn")
     public String afterChoiseUser(Model model,@RequestParam (value = "Name") String username){
         Users user = userService.getUserByName(username);
-        SettingTranslate.setUsers(user);
+        SettingTranslate.getSettingTranslate().setUsers(user);
         List<Translater_rules> tr = rulesService.getUsersRule(user);
         model.addAttribute("translater_rules", tr);
         return "choiseRule";
@@ -66,7 +67,7 @@ public class UserController {
 
     @PostMapping("/next")
     public String next(@RequestParam(value = "rule_id")Long rule_id) {
-        SettingTranslate.setTranslater_rules(rulesService.getRulesById(rule_id));
+        SettingTranslate.getSettingTranslate().setTranslater_rules(rulesService.getRulesById(rule_id));
         return "translator";
     }
 

@@ -6,24 +6,34 @@ import translator.entities.tables.Users;
 
 public class SettingTranslate {
 
-    private static Users users;
+    private static SettingTranslate instance;
 
-    private static Translater_rules translater_rules;
+    private SettingTranslate(){}
 
+    public static SettingTranslate getSettingTranslate(){
+        if (instance == null){
+            instance = new SettingTranslate();
+        }
+        return instance;
+    }
 
-    public static Users getUsers() {
+    private Users users;
+
+    private Translater_rules translater_rules;
+
+    public Users getUsers() {
         return users;
     }
 
-    public static void setUsers(Users users) {
-        users = users;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
-    public static Translater_rules getTranslater_rules() {
+    public Translater_rules getTranslater_rules() {
         return translater_rules;
     }
 
-    public static void setTranslater_rules(Translater_rules translater_rules) {
-        translater_rules = translater_rules;
+    public void setTranslater_rules(Translater_rules translater_rules) {
+        this.translater_rules = translater_rules;
     }
 }

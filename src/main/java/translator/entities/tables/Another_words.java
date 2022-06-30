@@ -7,6 +7,12 @@ import jakarta.persistence.*;
 @Table(name = "another_words")
 public class Another_words {
 
+    public Another_words(){}
+
+    public Another_words(String anotherWord) {
+        this.anotherWord = anotherWord;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "another_word_id")
@@ -21,15 +27,15 @@ public class Another_words {
     }
 
     @Column(name = "another_word")
-    String another_word;
+    String anotherWord;
 
 
-    public String getAnother_word() {
-        return another_word;
+    public String getAnotherWord() {
+        return anotherWord;
     }
 
     public void setAnother_word(String another_word) {
-        this.another_word = another_word;
+        this.anotherWord = another_word;
     }
 
 

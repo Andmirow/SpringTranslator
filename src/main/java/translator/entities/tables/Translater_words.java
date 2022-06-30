@@ -6,6 +6,12 @@ import jakarta.persistence.*;
 @Table(name = "translater_words")
 public class Translater_words {
 
+    public Translater_words(){}
+
+    public Translater_words(String translaterWord) {
+        this.translaterWord = translaterWord;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "translater_word_id", nullable = false)
@@ -20,15 +26,15 @@ public class Translater_words {
     }
 
     public String getTranslater_word() {
-        return translater_word;
+        return translaterWord;
     }
 
     public void setTranslater_word(String translater_word) {
-        this.translater_word = translater_word;
+        this.translaterWord = translater_word;
     }
 
     @Column(name = "translater_word")
-    private String translater_word;
+    private String translaterWord;
 
 
 
