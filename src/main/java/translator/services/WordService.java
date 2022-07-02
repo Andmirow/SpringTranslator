@@ -87,15 +87,15 @@ public class WordService {
         }
     }
 
-
-
-
-
-    public void deliteTranslater(Translater translater){
-        wordRepository.delete(translater);
+    public void deleteWord(String word){
+        List<Translater> list = findWord(word);
+        for (Translater translater : list){
+            deleteTranslater(translater);
+        }
     }
 
-
-
+    public void deleteTranslater(Translater translater){
+        wordRepository.delete(translater);
+    }
 
 }

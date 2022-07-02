@@ -64,17 +64,10 @@ public class ControllerWord {
         return "select";
     }
 
-
     @PostMapping("/delete")
-    @ResponseBody
     public String delete(Model model,@RequestParam(value = "word") String word) {
-
-//        wordService.deliteTranslater();
-//        boolean res = userDAO.delite(word);
-//        if (res){
-//            return "слово успешно удалено";
-//        }else
-           return "не удалось удалить слово";
+        wordService.deleteWord(word);
+           return selectAll(model);
     }
 
 

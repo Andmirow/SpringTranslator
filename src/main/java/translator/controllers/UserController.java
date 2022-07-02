@@ -48,7 +48,8 @@ public class UserController {
 
     @GetMapping("/choiseRule")
     public String choiseRuleTest(Model model) {
-        model.addAttribute("translater_rules", rulesService.getAllRules());
+        List<Translater_rules> tr = rulesService.getUsersRule(SettingTranslate.getSettingTranslate().getUsers());
+        model.addAttribute("translater_rules", tr);
         return "choiseRule";
     }
 
