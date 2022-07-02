@@ -80,27 +80,15 @@ public class ControllerDB {
 
 
 
-
-
-
-
-
     @PostMapping("/addWord")
     public String addWord() {
-        System.out.println("AddForm");
         return "redirect:/AddForm";
     }
-
 
     @GetMapping("/AddForm")
     public String showForm() {
         return "add-form";
     }
 
-    @PostMapping("/AddForm")
-    public String saveForm(@RequestParam(value = "word") String word, @RequestParam(value = "translate") String translate) {
-        //System.out.println(userDAO.Add(word,translate));
-        return "redirect:/translator";
-    }
 
 }

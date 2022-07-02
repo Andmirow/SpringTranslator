@@ -65,10 +65,16 @@ public class WordService {
         return matcher.matches();
     }
 
-    public Translater addTranslater(Translater_words translaterWords , Another_words anotherWords){
-        List<Translater> list = wordRepository.findByAnotherWordIdAndTranslaterWordIdAndRule(anotherWords,translaterWords,SettingTranslate.getSettingTranslate().getTranslater_rules());
-        return list.get(0);
+    public void addTranslater(Translater translater){
+        wordRepository.save(translater);
     }
+
+
+
+//    public Translater addTranslater(Translater_words translaterWords , Another_words anotherWords){
+//        List<Translater> list = wordRepository.findByAnotherWordIdAndTranslaterWordIdAndRule(anotherWords,translaterWords,SettingTranslate.getSettingTranslate().getTranslater_rules());
+//        return list.get(0);
+//    }
 
     public List<Translater> getAllWords(){
         return wordRepository.findAll();
@@ -97,5 +103,10 @@ public class WordService {
     public void deleteTranslater(Translater translater){
         wordRepository.delete(translater);
     }
+
+
+
+
+
 
 }

@@ -10,6 +10,14 @@ import java.util.Collection;
 @Table(name = "users")
 public class Users {
 
+    public Users(){}
+
+    public Users(String username, String password, boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+    }
+
     @Id
     @Column(name = "username")
     private String username;

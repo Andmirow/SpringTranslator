@@ -16,9 +16,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
     private UserService userService;
     private RulesService rulesService;
-
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -29,7 +29,6 @@ public class UserController {
     public void setRulesService(RulesService rulesService) {
         this.rulesService = rulesService;
     }
-
 
     @GetMapping
     public String choiseUser(Model model) {
@@ -53,13 +52,10 @@ public class UserController {
         return "choiseRule";
     }
 
-
-
     @PostMapping("/createNewUser")
-    public String createNewUser(@ModelAttribute(value = "users")Users users) {
-        return "redirect:/translator";
+    public String createNewUser() {
+        return "createUser";
     }
-
 
     @PostMapping("/back")
     public String back() {
@@ -72,11 +68,31 @@ public class UserController {
         return "translator";
     }
 
-//    @GetMapping("/choiseRule")
-//    public String choiseRule(Model model) {
-//        model.addAttribute("rules", rulesService.getUsersRule(SettingTranslate.getUsers()));
-//        return "choiseRule";
-//    }
+
+    @PostMapping("/createUser")
+    public String createUser(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
+        Users newUser = new Users(username,password,true);
+        userService.addUser(newUser);
+        return "redirect:/user";
+    }
+
+
+
+    @PostMapping("/createNewRule")
+    public String createNewRule() {
+        return "createRule";
+    }
+
+
+
+
+    @PostMapping("/createRule")
+    public String createRule(@RequestParam(value = "title") String title, @RequestParam(value = "rule") String rule) {
+        Translater_rules newRule = new Translater_rules(title,rule,SettingTranslate.getSettingTranslate().getUsers());
+        rulesService.addRule(newRule);
+        SettingTranslate.getSettingTranslate().setTranslater_rules(newRule);
+        return "translator";
+    }
 
 
 

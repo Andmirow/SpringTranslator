@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import translator.SettingTranslate;
+import translator.entities.tables.Another_words;
 import translator.entities.tables.Translater;
+import translator.entities.tables.Translater_words;
 import translator.services.WordService;
 
 import java.util.ArrayList;
@@ -68,6 +70,21 @@ public class ControllerWord {
     public String delete(Model model,@RequestParam(value = "word") String word) {
         wordService.deleteWord(word);
            return selectAll(model);
+    }
+
+
+    public void addTranslateConnection(String anotherWord, String translateWord){
+        Another_words anotherWords = wordService.addAnotherWord(anotherWord);
+        Translater_words translaterWords = wordService.addTranslateWord(translateWord);
+        if (anotherWords != null){
+            wordService.addTranslater(new Translater(translaterWords,anotherWords,SettingTranslate.getSettingTranslate().getTranslater_rules()));
+        }
+    }
+
+    @PostMapping("/AddForm")
+    public String saveForm(@RequestParam(value = "word") String word, @RequestParam(value = "translate") String translate) {
+       addTranslateConnection(word,translate);
+        return "redirect:/translator";
     }
 
 

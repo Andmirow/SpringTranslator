@@ -6,6 +6,14 @@ import jakarta.persistence.*;
 @Table(name = "translater_rules")
 public class Translater_rules {
 
+    public Translater_rules(){}
+
+    public Translater_rules(String translater_title, String translater_rule, Users users) {
+        this.translater_title = translater_title;
+        this.translater_rule = translater_rule;
+        this.users = users;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "rules_id")
