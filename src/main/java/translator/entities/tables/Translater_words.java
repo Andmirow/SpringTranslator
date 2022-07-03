@@ -13,7 +13,7 @@ public class Translater_words {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "translater_word_id", nullable = false)
     private long translater_word_id;
 

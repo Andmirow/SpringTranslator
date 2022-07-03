@@ -16,7 +16,7 @@ public class Translater {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "translater_id", nullable = false)
     private Long translater_id;
 

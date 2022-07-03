@@ -15,7 +15,7 @@ public class Translater_rules {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rules_id")
     private Long rules_id;
 

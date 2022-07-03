@@ -14,7 +14,7 @@ public class Another_words {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "another_word_id")
     private long another_word_id;
 

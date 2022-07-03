@@ -60,9 +60,13 @@ public class WordService {
     }
 
     private boolean checkRule(String Word){
-        Pattern pattern = Pattern.compile(SettingTranslate.getSettingTranslate().getTranslater_rules().getTranslater_rule());
-        Matcher matcher = pattern.matcher(Word);
-        return matcher.matches();
+        String mask = SettingTranslate.getSettingTranslate().getTranslater_rules().getTranslater_rule();
+        if (mask != null && !mask.equals("")){
+            Pattern pattern = Pattern.compile(SettingTranslate.getSettingTranslate().getTranslater_rules().getTranslater_rule());
+            Matcher matcher = pattern.matcher(Word);
+            return matcher.matches();
+        }
+        return true;
     }
 
     public void addTranslater(Translater translater){
