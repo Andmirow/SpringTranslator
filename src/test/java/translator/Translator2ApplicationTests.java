@@ -1,4 +1,4 @@
-package Translator.Translator2;
+package translator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
